@@ -1,4 +1,4 @@
-package Petsitter;
+package Logic;
 
 public class PetSitterApp {
     public static void main(String[] args) {

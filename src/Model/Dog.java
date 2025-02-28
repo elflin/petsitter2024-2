@@ -4,7 +4,8 @@ public class Dog {
 
     //    Attibute
     private String name;
-    private int happiness, fullness, cleaness, health, intelligence, food_amount, age, price;
+    private int happiness, fullness, cleaness, health, intelligence, food_amount;
+    private double age, price;
     private boolean die;
 
     //    Constructor: Function that is run when class became an object
@@ -145,5 +146,9 @@ public class Dog {
 
     public boolean isDie() {
         return die;
+    }
+    
+    public double getPrice(){
+        return this.price;
     }
 }
