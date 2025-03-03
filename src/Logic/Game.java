@@ -89,19 +89,16 @@ public class Game {
                     case 4 -> {
                         System.out.println(myActiveDog.getName() + " is playing");
                         myActiveDog.play();
-                        myActiveDog.showStatus();
                         myActiveDog = this.isPetDie(myActiveDog);
                     }
                     case 5 -> {
                         System.out.println(myActiveDog.getName() + " trained ");
                         myActiveDog.train();
-                        myActiveDog.showStatus();
                         myActiveDog = this.isPetDie(myActiveDog);
                     }
                     case 6 -> {
                         System.out.println(myActiveDog.getName() + " bathed ");
                         myActiveDog.bath();
-                        myActiveDog.showStatus();
                         myActiveDog = this.isPetDie(myActiveDog);
                     }
                     case 7 -> {
