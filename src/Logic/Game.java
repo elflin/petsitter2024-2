@@ -33,6 +33,7 @@ public class Game {
             System.out.println("8. Let Pet Sleep");
             System.out.println("9. Sell Pet");
             System.out.println("10. Show Pet Status");
+            System.out.println("11. Buy food stock");
             System.out.println("0. Exit");
             System.out.print("Choose you action: ");
             action = scan.nextInt();
@@ -102,9 +103,14 @@ public class Game {
                         myActiveDog = this.isPetDie(myActiveDog);
                     }
                     case 7 -> {
-                        System.out.println(myActiveDog.getName() + " feed ");
-                        myActiveDog.eat();
-                        myActiveDog = this.isPetDie(myActiveDog);
+                        if (this.currentPlayer.getFoodStock() >= this.myActiveDog.getFood_amount()) {
+                            System.out.println(myActiveDog.getName() + " feed ");
+                            this.currentPlayer.decreaseFoodStock(myActiveDog.getFood_amount());
+                            myActiveDog.eat();
+                            myActiveDog = this.isPetDie(myActiveDog);
+                        }else{
+                            System.out.println("Not Enough food stock");
+                        }
                     }
                     case 8 -> {
                         System.out.println(myActiveDog.getName() + " is sleeping");
@@ -121,6 +127,10 @@ public class Game {
                     }
                     case 10 ->
                         myActiveDog.showStatus();
+                    case 11 -> {
+                        this.currentPlayer.buyFoodStock(20, 10);
+                    }
+
                     case 0 ->
                         System.out.println("~~THANK YOU FOR PLAYING PETSITTER~~");
                     default ->

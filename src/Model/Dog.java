@@ -151,4 +151,8 @@ public class Dog {
     public double getPrice(){
         return this.price;
     }
+    
+    public int getFood_amount(){
+        return this.food_amount;
+    }
 }

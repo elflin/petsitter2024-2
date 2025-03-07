@@ -44,7 +44,16 @@ public class Player {
         foodStock -= amount;
     }
     
+    public void buyFoodStock(int price, int amount) {
+        money -= price;
+        foodStock += amount;
+    }
+    
     public double getMoney(){
         return this.money;
+    }
+    
+    public double getFoodStock(){
+        return this.foodStock;
     }
 }
