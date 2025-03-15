@@ -16,9 +16,10 @@ public class Game {
         this.currentPlayer = new Player();
     }
 
-    public void Start() {
+    public Player Start(Player currentPlayer) {
         int action = 0;
-
+        this.currentPlayer = currentPlayer;
+        
         System.out.println("~~WELCOME TO PETSITTER~~");
 
         do {
@@ -34,7 +35,7 @@ public class Game {
             System.out.println("9. Sell Pet");
             System.out.println("10. Show Pet Status");
             System.out.println("11. Buy food stock");
-            System.out.println("0. Exit");
+            System.out.println("0. Logout");
             System.out.print("Choose you action: ");
             action = scan.nextInt();
             System.out.println("");
@@ -138,6 +139,8 @@ public class Game {
                 }
             }
         } while (action != 0);
+        
+        return this.currentPlayer;
     }
 
     private Dog isPetDie(Dog myActiveDog) {
