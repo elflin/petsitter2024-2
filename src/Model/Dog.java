@@ -3,10 +3,10 @@ package Model;
 public class Dog {
 
     //    Attibute
-    private String name;
-    private int happiness, fullness, cleaness, health, intelligence, food_amount;
-    private double age, price;
-    private boolean die;
+    protected String name;
+    protected int happiness, fullness, cleaness, health, intelligence, food_amount;
+    protected double age, price;
+    protected boolean die;
 
     //    Constructor: Function that is run when class became an object
     public Dog() {
