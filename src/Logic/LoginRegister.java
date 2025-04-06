@@ -26,8 +26,7 @@ public class LoginRegister {
     
     public void Menu(){
         Scanner scan = new Scanner(System.in);
-        Player currPlayer = null;
-       
+        Player currPlayer = null;  
         
         while (true) {
             System.out.println("Menu");

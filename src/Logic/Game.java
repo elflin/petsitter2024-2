@@ -1,7 +1,9 @@
 package Logic;
 
+import Model.BeautyDog;
 import Model.Dog;
 import Model.Player;
+import Model.SmartDog;
 import java.util.Scanner;
 
 public class Game {
@@ -19,7 +21,7 @@ public class Game {
     public Player Start(Player currentPlayer) {
         int action = 0;
         this.currentPlayer = currentPlayer;
-        
+
         System.out.println("~~WELCOME TO PETSITTER~~");
 
         do {
@@ -44,9 +46,31 @@ public class Game {
                 switch (action) {
                     case 1 -> {
                         System.out.println("Buying a dog cost 50. Your current money is " + this.currentPlayer.getMoney());
+
+                        int dogKindInput = 0;
+                        Dog newDog = null;
+
+                        do {
+                            System.out.println("What kind of dog do you want to buy?");
+                            System.out.println("1. Regular Dog");
+                            System.out.println("2. Smart Dog");
+                            System.out.println("3. Beauty Dog");
+                            System.out.println("Choose:");
+                            dogKindInput = scan.nextInt();
+                        } while (dogKindInput < 1 || dogKindInput > 3);
+
                         System.out.print("Enter your pet's name: ");
                         String dogName = scan.next() + scan.nextLine();
-                        Dog newDog = new Dog(dogName);
+
+                        switch (dogKindInput) {
+                            case 1 ->
+                                newDog = new Dog(dogName);
+                            case 2 ->
+                                newDog = new SmartDog(dogName);
+                            case 3 ->
+                                newDog = new BeautyDog(dogName);
+                        }
+
                         this.currentPlayer.buyADog(newDog);
                         this.myActiveDog = newDog;
                         System.out.println("Hai, " + myActiveDog.getName());
@@ -62,9 +86,30 @@ public class Game {
                         System.out.println("Buying a dog cost 50. Your current money is " + this.currentPlayer.getMoney());
 
                         if (this.currentPlayer.getMoney() >= 50) {
+                            int dogKindInput = 0;
+                            Dog newDog = null;
+
+                            do {
+                                System.out.println("What kind of dog do you want to buy?");
+                                System.out.println("1. Regular Dog");
+                                System.out.println("2. Smart Dog");
+                                System.out.println("3. Beauty Dog");
+                                System.out.println("Choose:");
+                                dogKindInput = scan.nextInt();
+                            } while (dogKindInput < 1 || dogKindInput > 3);
+
                             System.out.print("Enter your pet's name: ");
                             String dogName = scan.next() + scan.nextLine();
-                            Dog newDog = new Dog(dogName);
+
+                            switch (dogKindInput) {
+                                case 1 ->
+                                    newDog = new Dog(dogName);
+                                case 2 ->
+                                    newDog = new SmartDog(dogName);
+                                case 3 ->
+                                    newDog = new BeautyDog(dogName);
+                            }
+
                             this.currentPlayer.buyADog(newDog);
                             this.myActiveDog = newDog;
                             System.out.println("Hai, " + myActiveDog.getName());
@@ -109,7 +154,7 @@ public class Game {
                             this.currentPlayer.decreaseFoodStock(myActiveDog.getFood_amount());
                             myActiveDog.eat();
                             myActiveDog = this.isPetDie(myActiveDog);
-                        }else{
+                        } else {
                             System.out.println("Not Enough food stock");
                         }
                     }
@@ -139,7 +184,7 @@ public class Game {
                 }
             }
         } while (action != 0);
-        
+
         return this.currentPlayer;
     }
 
